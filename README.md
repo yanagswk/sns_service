@@ -5,6 +5,9 @@
 - Vue Tags Input : vueライブラリでタグを扱うのに役立つ(タグの自動補完付き)  
 入力済みタグのPHPは、spanタグで囲まれてPOST送信できないので、hiddenタグでタグ情報を送信。
 - アクセサ使用
+- OAuth : 認可の仕組み。googleアカウントを使用できるようにするために使用。
+- Socialite : Googleなどの他サービスのアカウントを使ったログイン機能を比較的簡単に実装することができる。  
+`composer require laravel/socialite`
 
 
 - ポリシー使用  

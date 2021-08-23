@@ -6,10 +6,18 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LoginController;
+// use Auth;
 
 
 // 認証パス
 Auth::routes();
+
+// google認証用
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])
+        ->name('{provider}');
+});
 
 // 一覧表示
 Route::get('/', [ArticleController::class, 'index'])
