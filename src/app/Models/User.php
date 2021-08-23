@@ -11,8 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 use App\Mail\BareMail;
 use App\Notifications\PasswordResetNotification;
-
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -59,6 +58,16 @@ class User extends Authenticatable
 
 
     /**
+     * articleクラスとのリレーション
+     * 1(user)対 多(article)
+     */
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class);
+    }
+
+
+    /**
      * Userモデルとのリレーション
      * 中間テーブル : follows
      *
@@ -83,6 +92,18 @@ class User extends Authenticatable
     public function followings(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followee_id')
+            ->withTimestamps();
+    }
+
+
+    /**
+     * 「いいね」におけるarticleモデルとのリレーション
+     * 多対多
+     * belongsToMany(Article:;class, 中間テーブル)
+     */
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(Article::class, 'likes')
             ->withTimestamps();
     }
 

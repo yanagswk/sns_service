@@ -25,7 +25,7 @@
 - [ ] loggedOutメソッドをオーバーライドして、ログアウト時に何かしらの処理をする。  
 - [ ] ポリシーを使わずに、投稿したユーザー以外は、記事の編集画面を開けないようにする。  
 - [ ] ポリシーでAuthモデルを試す。なぜUserモデル？  
-- プルダウン不具合[https://www.techpit.jp/courses/11/curriculums/12/sections/113/parts/424]  pacckege.jsonとapp.blade.phpとapp.jsにあるから？
+- [ ] プルダウン不具合[https://www.techpit.jp/courses/11/curriculums/12/sections/113/parts/424]  pacckege.jsonとapp.blade.phpとapp.jsにあるから？
 - [ ] 多対多のリレーションで取得できない。
 - [ ] 全てのタグを取得するallTagNamesを共通メソッドにする。
 - [ ] タグテーブルに登録済みのタグ数が膨大になってきた場合は、ある程度絞った方が良い。どのようなタグを優先するか、またそれをどのように絞り込むかを考える。

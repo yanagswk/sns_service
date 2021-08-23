@@ -45,16 +45,29 @@ Route::get('tags/{name}', [TagController::class, 'show'])
 
 // ユーザーページ
 Route::prefix('users')->name('users.')->group(function () {
+    // ユーザーの記事一覧
     Route::get('/{name}', [UserController::class, 'show'])
         ->name('show');
+    // ユーザーがいいねした記事一覧
+    Route::get('/{name}/likes', [UserController::class, 'likes'])
+        ->name('likes');
+    // フォロー一覧
+    Route::get('/{name}/followings', [UserController::class, 'followings'])
+        ->name('followings');
+    // フォロワー一覧
+    Route::get('/{name}/followers', [UserController::class, 'followers'])
+        ->name('followers');
+
+    // ログイン時
+    Route::middleware('auth')->group(function () {
+        // フォロー機能(nameに入るのはフォローする名前)
+        Route::put('/{name}/follow', [UserController::class, 'follow'])
+            ->name('follow');
+        // フォロー解除機能(nameに入るのはフォロー解除される名前)
+        Route::delete('/{name}/follow', [UserController::class, 'follow'])
+            ->name('unfollow');
+    });
 });
 
 
-Route::middleware('auth')->name('users.')->group(function () {
-    // フォロー機能(nameに入るのはフォローする名前)
-    Route::put('/{name}/follow', [UserController::class, 'follow'])
-        ->name('follow');
-    // フォロー解除機能(nameに入るのはフォロー解除される名前)
-    Route::delete('{name}/follow', [UserController::class, 'follow'])
-        ->name('unfollow');
-});
+
