@@ -50,7 +50,6 @@ class Article extends Model
      */
     public function isLikedBy(?User $user): bool
     {
-        // dd($this->likes);
         return $user
             ? (bool)$this->likes->where('id', $user->id)->count()
             : false;

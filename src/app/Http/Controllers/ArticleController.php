@@ -15,7 +15,6 @@ class ArticleController extends Controller
 
     public function __construct()
     {
-        // ポリシーの判定を設定 (ArtclePolicy)
         // ポリシーの判定を設定 (ArticlePolicy)
         $this->authorizeResource(Article::class, 'article');
     }
@@ -27,9 +26,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        // dd(Auth::check() ? Auth::id() : 'false');
-
-        $articles = Article::all()->sortByDesc('created_at');
+        // loadメソッドに引数としてリレーション名を渡すと、
+        // リレーション先のテーブルからもデータを取得する。
+        $articles = Article::all()->sortByDesc('created_at')
+            ->load(['user', 'likes', 'tags']);
 
         return view('articles.index', ['articles' => $articles]);
     }
