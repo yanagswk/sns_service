@@ -2,7 +2,18 @@
     <div class="card-body">
         <div class="d-flex flex-row">
             <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
-                <i class="fas fa-user-circle fa-3x"></i>
+                {{-- ユーザーアイコン --}}
+                @if (empty($user->img_name))
+                    <i class="fas fa-user-circle fa-3x"></i>
+                @else
+                    <img src="/storage/images/{{ $user->img_name }}">
+                @endif
+                {{-- <label for="file_photo" class="rounded-circle userProfileImg">
+                    <div class="userProfileImg_description">画像をアップロード</div>
+                    <i class="fas fa-camera fa-3x"></i>
+                    <input type="file" id="file_photo" name="img_name">
+                </label> --}}
+
             </a>
             @if (Auth::id() !== $user->id)
                 <follow-button class="ml-auto" :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
