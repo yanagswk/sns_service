@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Article;
 use App\Models\Tag;
+use App\Services\GetDatabaseService;
 
 
 class ArticleController extends Controller
@@ -42,9 +43,7 @@ class ArticleController extends Controller
     public function create()
     {
         // 全てのタグ名を取得
-        $allTagNames = Tag::all()->map(function ($tag) {
-            return ['text' => $tag->name];
-        });
+        $allTagNames = GetDatabaseService::getAllTagNames();
 
         return view('articles.create', [
             'allTagNames' => $allTagNames
@@ -91,9 +90,7 @@ class ArticleController extends Controller
         });
 
         // 全てのタグ名を取得
-        $allTagNames = Tag::all()->map(function ($tag) {
-            return ['text' => $tag->name];
-        });
+        $allTagNames = GetDatabaseService::getAllTagNames();
 
         return view('articles.edit', [
             'article' => $article,
