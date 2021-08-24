@@ -72,7 +72,7 @@ Route::prefix('users')->name('users.')->group(function () {
         Route::put('/{name}/follow', [UserController::class, 'follow'])
             ->name('follow');
         // フォロー解除機能(nameに入るのはフォロー解除される名前)
-        Route::delete('/{name}/follow', [UserController::class, 'follow'])
+        Route::delete('/{name}/follow', [UserController::class, 'unfollow'])
             ->name('unfollow');
     });
 });
