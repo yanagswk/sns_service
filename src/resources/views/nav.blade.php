@@ -2,11 +2,6 @@
 
     <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>Memo</a>
 
-    <form id="logout-button" method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button>ログアウト</button>
-    </form>
-
     <ul class="navbar-nav ml-auto">
 
         @guest
@@ -39,7 +34,6 @@
                         class="dropdown-item"
                         type="button"
                         onclick="location.href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">
-                        >
                         マイページ
                     </button>
                     <div class="dropdown-divider"></div>
@@ -57,3 +51,4 @@
     </ul>
 
 </nav>
+
