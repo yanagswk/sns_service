@@ -1,7 +1,7 @@
 
 // require('./bootstrap');
 
-import './bootstrap';
+// import './bootstrap';
 import Vue from 'vue';
 import ArticleLike from './components/ArticleLike.vue';
 import ArticleTagsInput from './components/ArticleTagsInput.vue';
