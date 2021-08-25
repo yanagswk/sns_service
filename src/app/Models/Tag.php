@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 use App\Models\Article;
+use App\Services\ArticlesInterface;
 
-class Tag extends Model
+
+class Tag extends Model implements ArticlesInterface
 {
     use HasFactory;
 

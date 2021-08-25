@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+use App\Services\LikesInterface;
 
-class Article extends Model
+
+class Article extends Model implements LikesInterface
 {
     use HasFactory;
 

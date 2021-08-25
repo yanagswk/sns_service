@@ -13,7 +13,11 @@ use App\Mail\BareMail;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class User extends Authenticatable
+use App\Services\ArticlesInterface;
+use App\Services\LikesInterface;
+
+
+class User extends Authenticatable implements ArticlesInterface, LikesInterface
 {
     use HasApiTokens, HasFactory, Notifiable;
 
