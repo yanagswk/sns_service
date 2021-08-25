@@ -34,7 +34,39 @@ return [
     |
     */
 
+    'request' => [
+        'enable' => env('LOG_REQUEST_ENABLE', false),
+    ],
+
+    'sql' => [
+        'enable' => env('LOG_SQL_ENABLE', false),
+    ],
+
     'channels' => [
+
+        // カスタムログチャンネル
+        'sqlQueryLog' => [
+            'driver' => 'custom',   // 自作チャンネル用に指定
+            'via' => App\Logging\CreateSQLQueryLogger::class,
+            // 'tap' => [App\Logging\CreateSQLQueryLogger::class],
+            'path' => storage_path('logs/sql.log'),
+            'level' => 'debug',  // ログレベル debug 以上だけ出力
+            'days' => 14,        // 14日分のログを保持する
+        ],
+
+        // カスタムログチャンネル
+        'requestLog' => [
+            'driver' => 'custom',   // 自作チャンネル用に指定
+            'via' => App\Logging\CreateSQLQueryLogger::class,
+            // 'tap' => [App\Logging\CreateSQLQueryLogger::class],
+            'path' => storage_path('logs/request.log'),
+            'level' => 'debug',  // ログレベル debug 以上だけ出力
+            'days' => 14,        // 14日分のログを保持する
+        ],
+
+
+
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
@@ -47,9 +79,10 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
+
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path('logs/daily_laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],

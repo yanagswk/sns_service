@@ -51,8 +51,8 @@ aliasesにも登録。
 - [X] laravel : サービス
 - [ ] laravel : サービスコンテナ
 - [ ] laravel : サービスプロバイダ
-- [ ] laravel : エラーハンドリング
-- [ ] laravel : イベント
+- [ ] laravel : ログ出力
+- [ ] laravel : イベント,リスナー
 - [ ] laravel : command
 
 
@@ -63,6 +63,15 @@ aliasesにも登録。
 - 既にtagsテーブルに存在するタグであれば、tagsテーブルに登録する必要は無く、記事とタグの紐付けのみを行えば良い(article_tagテーブルにレコードを保存するだけで良い)ことになります。(article_tagは中間テーブル)  
 そこで、firstOrCreateメソッドを使う。firstOrCreateメソッドは、引数として渡した「カラム名と値のペア」を持つレコードがテーブルに存在するかどうかを探し、もし存在すればそのモデルを返します。テーブルに存在しなければ、そのレコードをテーブルに保存した上で、モデルを返します。
 - DBの関係が多対多の場合は、中間テーブルに紐付けるのに`attach()`メソッドを使う。紐付けを解除するには`detach()`を使う。
+
+# ログ  
+- (参考)[https://note.kiriukun.com/entry/20190824-logging-sql-queries-to-other-logfile-using-custom-channel-in-laravel]  
+- クエリが実行された時のログ : `DataBaseQueryServiceProvider.php`   
+Log::channelでチャンネルを指定  
+- リクエスト実行時のログ : `RequestLogger.php`  
+Log::channelでチャンネルを指定  
+
+
 
 ## ブランチ  
 - new_work: 作業用
