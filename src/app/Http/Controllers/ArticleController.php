@@ -17,6 +17,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         // ポリシーの判定を設定 (ArticlePolicy)
+        //  リソースコントローラーの場合は、コンストラクタに登録できる。
         $this->authorizeResource(Article::class, 'article');
     }
 

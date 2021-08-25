@@ -5,6 +5,8 @@ namespace App\Policies;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
+
 
 class ArticlePolicy
 {
@@ -64,7 +66,9 @@ class ArticlePolicy
     public function update(User $user, Article $article)
     {
         // ログイン中のユーザーのIDと記事モデルのユーザーIDが一致すればtrue
-        return $user->id === $article->user_id;
+        return $user->id === $article->user_id
+            ? Response::allow()
+            : Response::deny('You do not own this post.');
     }
 
     /**
@@ -78,7 +82,11 @@ class ArticlePolicy
     public function delete(User $user, Article $article)
     {
         // ログイン中のユーザーのIDと記事モデルのユーザーIDが一致すればtrue
-        return $user->id === $article->user_id;
+        return $user->id === $article->user_id
+            // true
+            ? Response::allow()
+            // false
+            : Response::deny('You do not own this post.');
     }
 
     /**

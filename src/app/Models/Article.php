@@ -45,6 +45,18 @@ class Article extends Model
 
 
     /**
+     * tagテーブルとのリレーション
+     *
+     * article_tag: tagテーブルとの中間テーブル
+     * belongsToMany('role_user', 中間テーブル)
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'article_tag')->withTimestamps();
+    }
+
+
+    /**
      * ユーザーモデルを渡すと、そのユーザーがこの記事をいいね済みかどうかを返す
      *
      */
@@ -60,7 +72,7 @@ class Article extends Model
      * 記事のいいね数を返す
      *
      * アクセサ使用
-     * article->countlikesで呼べる
+     * article->count_likesで呼べる
      */
     public function getCountLikesAttribute(): int
     {
@@ -68,14 +80,11 @@ class Article extends Model
     }
 
 
-    /**
-     * tagテーブルとのリレーション
-     *
-     * article_tag: tagテーブルとの中間テーブル
-     * belongsToMany('role_user', 中間テーブル)
-     */
-    public function tags(): BelongsToMany
-    {
-        return $this->belongsToMany(Tag::class, 'article_tag')->withTimestamps();
-    }
+    // public function getTitleAttribute($value)
+    // {
+    //     return mb_strlen($value);
+    // }
+
+
+
 }
