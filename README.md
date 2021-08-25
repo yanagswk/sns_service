@@ -43,12 +43,13 @@ aliasesにも登録。
 - [ ] リレーション部分をinner joinを使ってSQLを書いてみる  
 - [X] 現在ログイン中のユーザーを表示
 - [ ] ユーザーモデルに画像追加 (画像アップロード前にプレビュー機能)[https://www.techpit.jp/courses/42/curriculums/45/sections/362/parts/1148]
-- [X] アクセサ、ミューテタ実装
+- [X] アクセサ実装
 - [X] ポリシー実装  
 ユーザーが投稿した記事を、別のユーザーが更新・削除できないようにする  
 - [ ] ゲート実装  
 - [X] laravel : サービス
 - [ ] laravel : サービスコンテナ
+- [ ] laravel : サービスプロバイダ
 - [ ] laravel : エラーハンドリング
 - [ ] laravel : イベント
 - [ ] laravel : command
@@ -63,4 +64,7 @@ aliasesにも登録。
 - DBの関係が多対多の場合は、中間テーブルに紐付けるのに`attach()`メソッドを使う。紐付けを解除するには`detach()`を使う。
 
 ## ブランチ  
-- work: サービス追加 なぜかaxiosでエラーが出る
+- new_work: 作業用
+- work: サービス追加 なぜかaxiosでエラーが出る -> 解決 -> 削除
+- google_auth: goggleの認証機能実装
+- follow_function: フォロー機能実装
