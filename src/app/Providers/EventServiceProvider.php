@@ -7,6 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+/**
+ * イベントとリスナを登録
+ */
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +21,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        // アクセスを検出するイベント
+        'App\Events\AccessDetectionEvent' => [
+            // アクセスリスナー
+            'App\Listeners\AccessIpRecordListener',
+        ]
     ];
 
     /**

@@ -30,7 +30,7 @@ aliasesにも登録。
 # TODO  
 - [ ] loggedOutメソッドをオーバーライドして、ログアウト時に何かしらの処理をする。  
 - [ ] ポリシーを使わずに、投稿したユーザー以外は、記事の編集画面を開けないようにする。  
-- [ ] ポリシーでAuthモデルを試す。なぜUserモデル？   
+- [X] ポリシーでAuthモデルを試す。なぜUserモデル？   
 -> ログインユーザではなく、その人自身がのみ更新できるようにするから 
 - [x] プルダウン不具合[https://www.techpit.jp/courses/11/curriculums/12/sections/113/parts/424]  pacckege.jsonとapp.blade.phpとapp.jsにあるから？  
 -> app.jsのbootstrap読み込むところをコメントアウトで解決
@@ -51,8 +51,14 @@ aliasesにも登録。
 - [X] laravel : サービス
 - [ ] laravel : サービスコンテナ
 - [ ] laravel : サービスプロバイダ
-- [ ] laravel : ログ出力
-- [ ] laravel : イベント,リスナー
+- [X] laravel : ログ出力
+  - (参考)[https://note.kiriukun.com/entry/20190824-logging-sql-queries-to-other-logfile-using-custom-channel-in-laravel]  
+  - クエリが実行された時のログ : `DataBaseQueryServiceProvider.php`   
+  Log::channelでチャンネルを指定  
+  - リクエスト実行時のログ : `RequestLogger.php`  
+  Log::channelでチャンネルを指定 
+- [X] laravel : イベント,リスナー  
+  - AccessDetectionEvent, AccessIpRecordListener
 - [ ] laravel : command
 
 

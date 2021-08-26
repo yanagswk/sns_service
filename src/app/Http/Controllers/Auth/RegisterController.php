@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\AccessDetectionEvent;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -110,7 +111,8 @@ class RegisterController extends Controller
         // //画像を横400px, 縦400pxにリサイズし保存
         // $image->resize(400, 400)->save(storage_path() . '/app/public/images/' . $fileNameToStore);
 
-
+        // イベント発生 (EventServiceProviderに登録)
+        event(new AccessDetectionEvent($data['name']));
 
 
         return User::create([

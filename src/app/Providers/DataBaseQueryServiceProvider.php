@@ -23,8 +23,6 @@ class DataBaseQueryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Log::debug('スタート');
-
         if (config('logging.sql.enable') === false) {
             return;
         }
