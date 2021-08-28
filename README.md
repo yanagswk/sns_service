@@ -40,7 +40,7 @@ aliasesにも登録。
 - [ ] タグテーブルに登録済みのタグ数が膨大になってきた場合は、ある程度絞った方が良い。どのようなタグを優先するか、またそれをどのように絞り込むかを考える。
 - [ ] 記事に使われているタグの総数を登録する。
 - [ ] フォローボタンが押されたと同時にフォロワー数表示を変化させる  
-- [ ] リレーション部分をinner joinを使ってSQLを書いてみる  
+- [X] リレーション部分をinner joinを使ってSQLを書いてみる  
 - [X] 現在ログイン中のユーザーを表示
 - [ ] ユーザーモデルに画像追加 (画像アップロード前にプレビュー機能)[https://www.techpit.jp/courses/42/curriculums/45/sections/362/parts/1148]
 - [X] インターフェース実装してみる
@@ -48,6 +48,7 @@ aliasesにも登録。
 - [X] ポリシー実装  
 ユーザーが投稿した記事を、別のユーザーが更新・削除できないようにする  
 - [ ] ゲート実装  
+- [ ] トレイト
 - [X] laravel : サービス
 - [ ] laravel : サービスコンテナ
 - [ ] laravel : サービスプロバイダ
@@ -60,12 +61,12 @@ aliasesにも登録。
 - [X] laravel : イベント,リスナー  
   - AccessDetectionEvent, AccessIpRecordListener
 - [ ] laravel : command
+- [ ] laravel : APIリソース
 
 
 # memo  
 - `npm run watch-poll`  
 - Vue.jsでは、親コンポーネント(ここではBlade)からpropsへ渡されたプロパティの値を、子のコンポーネント側で変更することは推奨されていません。  
-- アクセサ (getCountLikesAttribute())[https://www.techpit.jp/courses/11/curriculums/12/sections/113/parts/425]  
 - 既にtagsテーブルに存在するタグであれば、tagsテーブルに登録する必要は無く、記事とタグの紐付けのみを行えば良い(article_tagテーブルにレコードを保存するだけで良い)ことになります。(article_tagは中間テーブル)  
 そこで、firstOrCreateメソッドを使う。firstOrCreateメソッドは、引数として渡した「カラム名と値のペア」を持つレコードがテーブルに存在するかどうかを探し、もし存在すればそのモデルを返します。テーブルに存在しなければ、そのレコードをテーブルに保存した上で、モデルを返します。
 - DBの関係が多対多の場合は、中間テーブルに紐付けるのに`attach()`メソッドを使う。紐付けを解除するには`detach()`を使う。

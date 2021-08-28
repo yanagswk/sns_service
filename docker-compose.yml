@@ -1,6 +1,7 @@
 version: "3.8"
 
-# Docker Volume (データを永続的に保存できるようにする仕組み)
+# 名前付きボリューム (データを永続的に保存できるようにする仕組み)
+# ホスト上にvolumesを作成
 volumes:
     mysql-volume:
 
@@ -25,7 +26,9 @@ services:
             dockerfile: ./docker/nginx/Dockerfile
         ports:
             - ${WEB_PORT}:80
-        depends_on:     # コンテナ間の依存関係(先に起動するコンテナのサービス名) PHP->Nginxの順でコンテナを起動
+        # コンテナ間の依存関係(先に起動するコンテナのサービス名)
+        # app(php)->web(nginx)の順でコンテナを起動
+        depends_on:
             - app
         volumes:
             - ./src/:/var/www/html
